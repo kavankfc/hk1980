@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "hk1980"
+version = "0.1.1"
+description = "A forked project from hk80. This project also convert the coordincates with pyproj, with a more update version and providing better performance"
+authors = ["Kavan Chan <kavandevelopment@gmail.com>"]
+keywords = ["hk80", "hk1980", "wgs1984", "wgs84", "grid", "coordinate", "hk"]
+readme = "README.md"
+homepage = "https://github.com/kavandev/hk1980"
+repository = "https://github.com/kavandev/hk1980"
+license = "MIT"
+include = ["LICENSE",]
+packages = [{include = "hk1980"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pyproj = "^3.3.0"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+isort = "^5.10.1"
+autoflake = "^1.4"
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
