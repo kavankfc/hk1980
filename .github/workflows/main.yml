@@ -15,20 +15,24 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   test:
     # The type of runner that the job will run on
-    runs-on: python:3.9-slim
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
       - name: Install Poetry
         run: |
           curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | POETRY_HOME=/opt/poetry python && \
@@ -38,6 +42,12 @@ jobs:
 
       - name: Install dependencies
         run: poetry install
-        
+
+      - name: Lint
+        run: |
+          poetry run autoflake --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables -r app
+          poetry run black app --check -t py39
+          poetry run isort app --check --profile=black --diff
+
       - name: Run tests
         run: poetry run pytest
