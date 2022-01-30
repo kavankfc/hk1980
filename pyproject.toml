@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hk1980"
 version = "0.1.1"
-description = "A forked project from hk80. This project also convert the coordincates with pyproj, with a more update version and providing better performance"
+description = "A forked project from hk80. This project also convert the coordinates between Hong Kong 1980 Grid System and World Geodetic System 1984 with pyproj, with a more update version of pyproj and providing better performance."
 authors = ["Kavan Chan <kavandevelopment@gmail.com>"]
 keywords = ["hk80", "hk1980", "wgs1984", "wgs84", "grid", "coordinate", "hk"]
 readme = "README.md"
