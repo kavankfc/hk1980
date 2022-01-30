@@ -45,9 +45,9 @@ jobs:
 
       - name: Lint
         run: |
-          poetry run autoflake --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables -r app
-          poetry run black app --check -t py39
-          poetry run isort app --check --profile=black --diff
+          poetry run autoflake hk1980 --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables -r 
+          poetry run black hk1980 --check -t py39
+          poetry run isort hk1980 --check --profile=black --diff
 
       - name: Run tests
         run: poetry run pytest
