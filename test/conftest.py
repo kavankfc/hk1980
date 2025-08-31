@@ -3,12 +3,16 @@ import pytest
 
 @pytest.fixture
 def valid_wgs84_point():
-    return (22.2580467, 114.00876443)  # NOTE: same location as valid_hk80_point
+    latitude = 22.2580467
+    longitude = 114.00876443
+    return (latitude, longitude)  # NOTE: same location as valid_hk80_point
 
 
 @pytest.fixture
 def valid_hk80_point():
-    return (813259.700, 818940.160)  # NOTE: same location as valid_wgs84_point
+    northing = 813259.700
+    easting = 818940.160
+    return (northing, easting)  # NOTE: same location as valid_wgs84_point
 
 
 @pytest.fixture

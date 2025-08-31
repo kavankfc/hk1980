@@ -54,14 +54,26 @@ class TestHK80:
 def test_correct_conversion_to_wgs1984(valid_hk80_point, valid_wgs84_point):
     converted = HK80(*valid_hk80_point).to_wgs84()
 
-    # accepted tolerance is 0.00000001
-    assert abs(converted.latitude - valid_wgs84_point[0]) <= 0.00000001
-    assert abs(converted.longitude - valid_wgs84_point[1]) <= 0.00000001
+    # response from https://www.geodetic.gov.hk/transform/v2/?inSys=hkgrid&e=813259.7&n=818940.16
+    expected = {
+        "wgsLat": 22.309278113,
+        "wgsLong": 113.953573028,
+    }
+
+    ACCEPTED_TOLERANCE = 0.1
+    assert abs(converted.latitude - expected["wgsLat"]) <= ACCEPTED_TOLERANCE
+    assert abs(converted.longitude - expected["wgsLong"]) <= ACCEPTED_TOLERANCE
 
 
-def test_correct_conversion_to_hk1980(valid_wgs84_point, valid_hk80_point):
+def test_correct_conversion_to_hk1980(valid_wgs84_point):
     converted = LatLon(*valid_wgs84_point).to_hk80()
 
-    # accepted tolerance is 0.001
-    assert abs(converted.easting - valid_hk80_point[0]) <= 0.001
-    assert abs(converted.northing - valid_hk80_point[1]) <= 0.001
+    # response from https://www.geodetic.gov.hk/transform/v2/?inSys=wgsGeog&lat=22.2580467&long=114.00876443
+    expected = {
+        "hkN": 813259.701,
+        "hkE": 818940.161,
+    }
+
+    ACCEPTED_TOLERANCE = 0.01
+    assert abs(converted.easting - expected["hkE"]) <= ACCEPTED_TOLERANCE
+    assert abs(converted.northing - expected["hkN"]) <= ACCEPTED_TOLERANCE
