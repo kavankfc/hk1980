@@ -11,8 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Fixed
 
+## [0.2.3] - 2025-08-30
+### Changed
+- Modified minimum supported version of pyproj
+
 ## [0.2.2] - 2025-08-30
-### Added
+### Fixed
 - Fix incorrect point conversion from wgs84 to hk1980
 
 ## [0.2.1] - 2025-08-30
@@ -27,3 +31,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1.0]: https://github.com/kavandev/hk1980/releases/tag/0.1.0
 [0.2.1]: https://github.com/kavandev/hk1980/releases/tag/0.2.1
 [0.2.2]: https://github.com/kavandev/hk1980/releases/tag/0.2.2
+[0.2.3]: https://github.com/kavandev/hk1980/releases/tag/0.2.2
