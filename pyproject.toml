@@ -13,7 +13,7 @@ packages = [{include = "hk1980"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pyproj = "^3.7.1"
+pyproj = "^3.5.0"
 
 [tool.poetry.group.dev.dependencies]
 autoflake = "^2.3"
