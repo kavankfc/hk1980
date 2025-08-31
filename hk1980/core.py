@@ -81,11 +81,10 @@ class LatLon(Point):
         return f"LatLon(latitude={self.latitude}, longitude={self.longitude})"
 
     def to_hk80(self) -> Point:
-        return HK80(
-            *TRANSFORMER_WGS1984_TO_HK1980.transform(
-                self.y, self.x, errcheck=self._error_check
-            )
+        northing, easting = TRANSFORMER_WGS1984_TO_HK1980.transform(
+            self.y, self.x, errcheck=self._error_check
         )
+        return HK80(easting=easting, northing=northing)
 
 
 class HK80(Point):
