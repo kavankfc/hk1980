@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hk1980"
-version = "0.1.1"
+version = "0.2.1"
 description = "A forked project from hk80. This project also convert the coordinates between Hong Kong 1980 Grid System and World Geodetic System 1984 with pyproj, with a more update version of pyproj and providing better performance."
 authors = ["Kavan Chan <kavandevelopment@gmail.com>"]
 keywords = ["hk80", "hk1980", "wgs1984", "wgs84", "grid", "coordinate", "hk"]
@@ -12,13 +12,12 @@ include = ["LICENSE",]
 packages = [{include = "hk1980"}]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-pyproj = "^3.3.0"
+python = "^3.10"
+pyproj = "^3.7.1"
 
-[tool.poetry.dev-dependencies]
-black = "^21.12b0"
-isort = "^5.10.1"
-autoflake = "^1.4"
+[tool.poetry.group.dev.dependencies]
+autoflake = "^2.3"
+ruff = "^0.12.11"
 pytest = "^6.2.5"
 
 [build-system]

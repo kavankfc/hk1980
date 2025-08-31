@@ -1,4 +1,4 @@
-from hk1980 import LatLon, HK80
+from hk1980 import HK80, LatLon
 
 
 class TestLatLon:
@@ -15,15 +15,15 @@ class TestLatLon:
         return LatLon(*invalid_wgs84_point)
 
     def test_conversion(self, valid_wgs84_point: tuple) -> HK80:
-        LatLonObj = self.test_valid_contruction(valid_wgs84_point)  # type: LatLon
+        LatLonObj = self.test_valid_contruction(valid_wgs84_point)
         return LatLonObj.to_hk80()
 
     def test_boundary_min_conversion(self, min_wgs84_point: tuple) -> HK80:
-        LatLonObj = self.test_valid_contruction(min_wgs84_point)  # type: LatLon
+        LatLonObj = self.test_valid_contruction(min_wgs84_point)
         return LatLonObj.to_hk80()
 
     def test_boundary_max_conversion(self, max_wgs84_point: tuple) -> HK80:
-        LatLonObj = self.test_valid_contruction(max_wgs84_point)  # type: LatLon
+        LatLonObj = self.test_valid_contruction(max_wgs84_point)
         return LatLonObj.to_hk80()
 
 
@@ -39,15 +39,15 @@ class TestHK80:
         return HK80(*invalid_hk80_point)
 
     def test_conversion(self, valid_hk80_point: tuple) -> LatLon:
-        HK80Obj = self.test_valid_contruction(valid_hk80_point)  # type: HK80
+        HK80Obj = self.test_valid_contruction(valid_hk80_point)
         return HK80Obj.to_wgs84()
 
     def test_boundary_min_conversion(self, min_hk80_point: tuple) -> LatLon:
-        HK80Obj = self.test_valid_contruction(min_hk80_point)  # type: HK80
+        HK80Obj = self.test_valid_contruction(min_hk80_point)
         return HK80Obj.to_wgs84()
 
     def test_boundary_max_conversion(self, max_hk80_point: tuple) -> LatLon:
-        HK80Obj = self.test_valid_contruction(max_hk80_point)  # type: HK80
+        HK80Obj = self.test_valid_contruction(max_hk80_point)
         return HK80Obj.to_wgs84()
 
 
