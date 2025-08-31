@@ -21,23 +21,21 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8, 3.9]
+        python-version: ["3.10", "3.11"]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install Poetry
         run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | POETRY_HOME=/opt/poetry python && \
-          cd /usr/local/bin && \
-          ln -s /opt/poetry/bin/poetry && \
+          curl -sSL https://install.python-poetry.org | python3 -
           poetry config virtualenvs.create false
 
       - name: Install dependencies
@@ -45,9 +43,9 @@ jobs:
 
       - name: Lint
         run: |
-          poetry run autoflake hk1980 --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables -r 
-          poetry run black hk1980 --check -t py39
-          poetry run isort hk1980 --check --profile=black --diff
+          poetry run autoflake hk1980 --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables -i -r
+          poetry run ruff check --select I --fix .
+          poetry run ruff format .
 
       - name: Run tests
         run: poetry run pytest
